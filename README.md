@@ -21,16 +21,33 @@ eval $(ssh-agent -s)
 sudo service ssh status
 # sudo service ssh --full-restart
 ssh-add /home/~username/.ssh/githubkey
-ssh-keygen -l -E MD5 -f /home/~username/.ssh/githubkey
+ssh-keygen -E MD5 -f /home/~username/.ssh/githubkey
 ssh -T git@github.com
+```
+From GitBash
+
+```sh
+pwd
+mkdir  /c/Users/$USERNAME/.ssh/
+# ssh-add  /c/Users/$USERNAME/.ssh/githubkey
+# echo -e 'y' | ssh-keygen -t rsa -b 4096 -f ~/.ssh/$ssh_key -C "youremail@groland.grd" # -N $ssh_passphrase
+echo -e 'y' | ssh-keygen -E MD5 -f /c/Users/$USERNAME/.ssh/githubkey
+ls -al  /c/Users/$USERNAME/.ssh/
 ```
 
 # Allow your SSH Keys from GitHub
 
 Go to [https://github.com/settings/keys](https://github.com/settings/keys) click on the button 'New SSH Key' then 'Add SSH Key'
 
+```sh
+pwd
+ls -al  /c/Users/$USERNAME/.ssh/
+ssh -T git@github.com -i /c/Users/$USERNAME/.ssh/githubkey
+```
+
 # Git configuration
 
+Add a file named '.gitconfig' to /c/Users/$USERNAME/.gitconfig
 ```sh
 #https://stackoverflow.com/questions/17307154/git-bash-push-to-bitbucket-ignores-ssh-key
 # which ssh gaves /bin/ssh ..... In the .bashrc profile we just added
@@ -42,8 +59,8 @@ Go to [https://github.com/settings/keys](https://github.com/settings/keys) click
 	email = bob.jojo@yourcorp.com
 [core]
 	editor = nano
-	#sshCommand = ssh -i /c/Users/bob.jojo/.ssh/bob_rsa
-	sshCommand = ssh -i /c/Users/bob.jojo/.ssh/id_rsa
+	#sshCommand = ssh -i /c/Users/bob.jojo/.ssh/id_rsa
+	sshCommand = ssh -i /c/Users/bob.jojo/.ssh/githubkey
 
 [alias]
 	hist = log --all --graph --decorate --oneline
@@ -53,9 +70,8 @@ Go to [https://github.com/settings/keys](https://github.com/settings/keys) click
 	sslVerify = true
 	#sslCAInfo=/ssl/certs/ca-bundle.crt
 	
-# https://stackoverflow.com/questions/23885449/unable-to-resolve-unable-to-get-local-issuer-certificate-using-git-on-windows
 # Since git 2.3.1, you can put https://your.domain inside an HTTP section to indicate the following certificate is only for this domain.
-[http "https://git-pprd.apps.airliquide.com"]
+[http "https://git-xxx.yourcorp.com"]
 	# Put the certificate at C:\Users\~YourUserName\AppData\Local\Programs\Git\mingw64\ssl\certs
 	sslCAInfo=/ssl/certs/the_cert-tree.cer
 	
