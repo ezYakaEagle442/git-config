@@ -21,7 +21,7 @@ eval $(ssh-agent -s)
 sudo service ssh status
 # sudo service ssh --full-restart
 ssh-add /home/~username/.ssh/githubkey
-ssh-keygen -E MD5 -f /home/~username/.ssh/githubkey
+echo -e 'y' | ssh-keygen -E MD5 -f /home/~username/.ssh/githubkey
 ssh -T git@github.com
 ```
 From GitBash
@@ -47,7 +47,9 @@ ssh -T git@github.com -i /c/Users/$USERNAME/.ssh/githubkey
 
 # Git configuration
 
-Add a file named '.gitconfig' to /c/Users/$USERNAME/.gitconfig
+On Windows Add a file named '.gitconfig' to /c/Users/$USERNAME/.gitconfig
+On WSL Add a file named '.gitconfig' to /home/yourusername/.gitconfig
+
 ```sh
 #https://stackoverflow.com/questions/17307154/git-bash-push-to-bitbucket-ignores-ssh-key
 # which ssh gaves /bin/ssh ..... In the .bashrc profile we just added
