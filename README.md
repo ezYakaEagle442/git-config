@@ -96,4 +96,12 @@ On WSL Add a file named '.gitconfig' to /home/yourusername/.gitconfig
 
 ```
 
+# Java Tips
 
+[https://www.baeldung.com/linux/remove-paths-from-path-variable](https://www.baeldung.com/linux/remove-paths-from-path-variable)
+
+
+```sh
+PATH=$(tr : '\n' <<<"$PATH" | grep -x -v "/usr/bin/java" | paste -sd:)
+printenv PATH
+```
