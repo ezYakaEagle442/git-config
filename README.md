@@ -105,3 +105,15 @@ On WSL Add a file named '.gitconfig' to /home/yourusername/.gitconfig
 PATH=$(tr : '\n' <<<"$PATH" | grep -x -v "/usr/bin/java" | paste -sd:)
 printenv PATH
 ```
+
+
+
+# Change End Of Line in VSCode
+
+Edit parameters Cog / Settings / Search for 'files.eol' and set '\n'
+
+
+To remove '\r'
+```sh
+find . -type f -print0 | xargs -0 dos2unix --
+```
