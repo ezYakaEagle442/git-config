@@ -70,12 +70,13 @@ On WSL Add a file named '.gitconfig' to /home/yourusername/.gitconfig
 [http]
 	#proxy = http://gateway.yourcorp.zscaler.net:80
 	sslVerify = true
-	#sslCAInfo=/ssl/certs/ca-bundle.crt
+	# /ssl/certs/ca-bundle.crt
+	#sslCAInfo=/etc/ssl/certs/
 	
 # Since git 2.3.1, you can put https://your.domain inside an HTTP section to indicate the following certificate is only for this domain.
 [http "https://git-xxx.yourcorp.com"]
 	# Put the certificate at C:\Users\~YourUserName\AppData\Local\Programs\Git\mingw64\ssl\certs
-	sslCAInfo=/ssl/certs/the_cert-tree.cer
+	sslCAInfo=/etc/ssl/certs/the_cert-tree.cer
 	
 [http "https://ec2-42-42-42-42.eu-west-1.compute.amazonaws.com"]
 	# Put the certificate at C:\Users\~YourUserName\AppData\Local\Programs\Git\mingw64\ssl\certs
